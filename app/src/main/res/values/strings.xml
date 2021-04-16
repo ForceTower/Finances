@@ -1,3 +1,21 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:locale="pt_BR">
     <string name="app_name">Finance</string>
+
+    <string name="facebook_app_id" translatable="false">410007356627372</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb410007356627372</string>
+    <string name="onboarding_title_one">Gerencie seu Dinheiro</string>
+    <string name="onboarding_subtitle_one">Você poderá ver seus pagamentos e administrar seu tempo e dinheiro com suas proprias mãos.</string>
+    <string name="onboarding_title_two">Economize</string>
+    <string name="onboarding_subtitle_two">Verifique seus maiores gastos facilmente e crie estratégias para diminuir seus custos com poucos passos.</string>
+    <string name="onboarding_title_three">Crie metas</string>
+    <string name="onboarding_subtitle_three">Defina objetivos e sonhos para realizar com suas economias.</string>
+    <string name="auth_access_account">Acesse sua conta</string>
+    <string name="auth_access_account_subtitle">para controlar suas finanças</string>
+    <string name="auth_type_email">Digite seu email</string>
+    <string name="auth_start_continue">Continuar</string>
+    <string name="auth_alternative_text">ou</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="auth_enter_as_guest">Entrar como convidado</string>
 </resources>

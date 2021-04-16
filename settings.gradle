@@ -1,2 +1,3 @@
-include ':android-toolkit', ':app'
+include ':toolkit', ':app'
 rootProject.name = "Finance"
+project(":toolkit").projectDir = new File(rootDir, 'android-toolkit')

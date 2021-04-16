@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph.xml"
+    app:startDestination="@id/onboarding">
+
+    <fragment
+        android:id="@+id/onboarding"
+        android:name="dev.forcetower.finances.view.onboarding.OnboardingFragment"
+        android:label="Onboarding"
+        tools:layout="@layout/fragment_onboarding">
+        <action
+            android:id="@+id/action_onboarding_to_auth_email"
+            app:destination="@id/auth_graph" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/auth_graph"
+        app:startDestination="@id/auth_email">
+        <fragment
+            android:id="@+id/auth_email"
+            android:name="dev.forcetower.finances.view.auth.EmailFragment"
+            android:label="Auth Email"
+            tools:layout="@layout/fragment_auth_email">
+            <action
+                android:id="@+id/action_auth_email_to_auth_password"
+                app:destination="@id/auth_password" />
+            <action
+                android:id="@+id/action_auth_email_to_createBasicFragment"
+                app:destination="@id/create_basic" />
+        </fragment>
+        <fragment
+            android:id="@+id/auth_password"
+            android:name="dev.forcetower.finances.view.auth.PasswordFragment"
+            android:label="Password"
+            tools:layout="@layout/fragment_auth_password" />
+        <fragment
+            android:id="@+id/create_basic"
+            android:name="dev.forcetower.finances.view.auth.CreateBasicFragment"
+            android:label="Basic Info"
+            tools:layout="@layout/fragment_auth_create_basic"/>
+    </navigation>
+</navigation>
