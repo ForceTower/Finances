@@ -9,7 +9,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
+            app:liftOnScroll="true"
+            app:liftOnScrollTargetViewId="@id/nested_scroll_view"
             style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
             app:paddingStartSystemWindowInsets="@{true}"
             app:paddingEndSystemWindowInsets="@{true}"
@@ -25,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
-                    android:background="@drawable/rounded_background"
+                    android:background="@drawable/rounded_background_24"
                     android:backgroundTint="@color/color_primary_20"
                     android:padding="8dp"
                     app:layout_constraintHorizontal_bias="0"
@@ -42,7 +43,7 @@
                         android:layout_marginEnd="8dp"
                         android:text="João Paulo Sena"
                         android:textColor="?attr/colorPrimary"
-                        android:textFontWeight="600"
+                        android:textStyle="bold"
                         tools:text="@tools:sample/full_names" />
                 </FrameLayout>
 
@@ -86,6 +87,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
@@ -95,186 +97,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="24dp"
-                android:clipToPadding="false"
                 app:paddingStartSystemWindowInsets="@{true}"
-                app:paddingEndSystemWindowInsets="@{true}"
-                app:paddingBottomSystemWindowInsets="@{true}">
+                app:paddingEndSystemWindowInsets="@{true}">
 
-                <com.google.android.material.card.MaterialCardView
+                <dev.forcetower.finances.widget.OverviewBalanceCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
+                    app:balance="124133.45"
+                    app:income="9867.34"
+                    app:payment="4873.51"
                     app:cardCornerRadius="14dp"
                     app:cardElevation="8dp"
-                    app:cardBackgroundColor="?attr/colorPrimary">
+                    app:cardBackgroundColor="?attr/colorPrimary"/>
 
-                    <View
-                        android:layout_width="36dp"
-                        android:layout_height="96dp"
-                        android:background="?attr/colorPrimaryLight"
-                        android:alpha="0.2"
-                        android:rotation="45"
-                        android:layout_marginTop="-27dp"
-                        android:layout_marginStart="3dp" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:clipToPadding="false"
+                    android:layout_marginTop="24dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/label_balance"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="26dp"
-                            android:paddingHorizontal="16dp"
-                            android:text="Saldo"
-                            android:textSize="16sp"
-                            android:textColor="?attr/colorLightOnPrimary"
-                            android:textFontWeight="200"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                    <dev.forcetower.finances.widget.OverviewActionItemView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        app:icon="@drawable/ic_baseline_add_24"
+                        app:text="@string/add_transaction"/>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/value_balance"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:text="$198.556,85"
-                            android:textSize="22sp"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:textFontWeight="600"
-                            android:letterSpacing="0.04"
-                            app:layout_constraintTop_toBottomOf="@id/label_balance"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            tools:text="$198.556,85"/>
+                    <dev.forcetower.finances.widget.OverviewActionItemView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        app:icon="@drawable/ic_outline_bar_chart_24"
+                        app:text="@string/transactions"/>
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/icon_income"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="16dp"
-                            android:background="?attr/colorIncome"
-                            app:layout_constraintBottom_toBottomOf="@+id/label_income"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/value_income"
-                            app:roundedViewRadius="@{4}"
-                            app:srcCompat="@drawable/ic_baseline_add_24"
-                            app:tint="@color/white" />
+                    <dev.forcetower.finances.widget.OverviewActionItemView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        app:icon="@drawable/ic_outline_money_24"
+                        app:text="@string/accounts"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/value_income"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginStart="8dp"
-                            android:minWidth="64dp"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:text="9.875,57"
-                            android:textSize="18sp"
-                            android:textFontWeight="600"
-                            android:letterSpacing="0.04"
-                            app:layout_constraintTop_toBottomOf="@id/value_balance"
-                            app:layout_constraintStart_toEndOf="@id/icon_income"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp">
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/label_income"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Entrada"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:textFontWeight="300"
-                            android:textSize="13sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/icon_income"
-                            app:layout_constraintTop_toBottomOf="@id/value_income" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="24dp"
+                        android:text="@string/latest_transactions"
+                        android:textColor="?attr/colorOnBackground"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_all_activities"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_all_activities"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/btn_all_activities" />
 
-                        <androidx.constraintlayout.widget.Barrier
-                            android:id="@+id/barrier_income"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:barrierDirection="end"
-                            app:constraint_referenced_ids="label_income,icon_income,value_income"/>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_all_activities"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:text="@string/see_all_transactions"
+                        android:textAllCaps="false"
+                        android:letterSpacing="0.001"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/icon_payment"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginStart="16dp"
-                            android:background="?attr/colorPayment"
-                            app:layout_constraintBottom_toBottomOf="@+id/label_payment"
-                            app:layout_constraintStart_toStartOf="@id/barrier_income"
-                            app:layout_constraintTop_toTopOf="@+id/value_income"
-                            app:roundedViewRadius="@{4}"
-                            app:srcCompat="@drawable/ic_baseline_remove_24"
-                            app:tint="@color/white" />
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/value_payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginStart="8dp"
-                            android:minWidth="64dp"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:text="1.237,62"
-                            android:textSize="18sp"
-                            android:textFontWeight="600"
-                            android:letterSpacing="0.04"
-                            app:layout_constraintTop_toBottomOf="@id/value_balance"
-                            app:layout_constraintStart_toEndOf="@id/icon_payment"/>
-
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/label_payment"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Pagamentos"
-                            android:textColor="?attr/colorOnPrimary"
-                            android:textFontWeight="300"
-                            android:textSize="13sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/icon_payment"
-                            app:layout_constraintTop_toBottomOf="@id/value_payment" />
-
-                        <View
-                            android:id="@+id/bar_3"
-                            android:layout_width="24dp"
-                            android:layout_height="30dp"
-                            android:alpha="0.2"
-                            android:layout_marginEnd="16dp"
-                            android:background="?attr/colorPrimaryLight"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent" />
-
-                        <View
-                            android:id="@+id/bar_2"
-                            android:layout_width="24dp"
-                            android:layout_height="70dp"
-                            android:alpha="0.2"
-                            android:layout_marginEnd="6dp"
-                            android:background="?attr/colorPrimaryLight"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/bar_3" />
-
-                        <View
-                            android:id="@+id/bar_1"
-                            android:layout_width="24dp"
-                            android:layout_height="48dp"
-                            android:alpha="0.2"
-                            android:layout_marginEnd="6dp"
-                            android:background="?attr/colorPrimaryLight"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/bar_2" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_transactions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingBottom="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:paddingBottomSystemWindowInsets="@{true}"
+                    tools:listitem="@layout/item_transaction_simple"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
