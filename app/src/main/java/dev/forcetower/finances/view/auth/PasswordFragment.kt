@@ -26,5 +26,10 @@ class PasswordFragment : BaseFragment() {
         binding.btnBackEmail.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.btnLoginEmail.setOnClickListener {
+            val direction = PasswordFragmentDirections.actionGlobalHomeOverview()
+            findNavController().navigate(direction)
+        }
     }
 }

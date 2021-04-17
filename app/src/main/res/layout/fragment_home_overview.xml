@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp"
+            style="@style/Widget.MaterialComponents.AppBarLayout.Surface"
+            app:paddingStartSystemWindowInsets="@{true}"
+            app:paddingEndSystemWindowInsets="@{true}"
+            app:paddingTopSystemWindowInsets="@{true}">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="@color/color_primary_20"
+                    android:padding="8dp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintBottom_toBottomOf="@id/borders"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_notifications"
+                    app:layout_constraintStart_toStartOf="@+id/borders"
+                    app:layout_constraintTop_toTopOf="@id/borders">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="João Paulo Sena"
+                        android:textColor="?attr/colorPrimary"
+                        android:textFontWeight="600"
+                        tools:text="@tools:sample/full_names" />
+                </FrameLayout>
+
+                <View
+                    android:id="@+id/borders"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="?android:textColorPrimaryInverse"
+                    android:layout_margin="16dp"
+                    app:clipToCircle="@{true}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/user_image"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="24dp"
+                    app:clipToCircle="@{true}"
+                    app:imageUrl="@{&quot;https://avatars.githubusercontent.com/u/9421614?v=4&quot;}"
+                    app:layout_constraintTop_toTopOf="@id/borders"
+                    app:layout_constraintBottom_toBottomOf="@id/borders"
+                    app:layout_constraintStart_toStartOf="@id/borders"
+                    app:layout_constraintEnd_toEndOf="@id/borders"
+                    tools:src="@tools:sample/avatars" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_notifications"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:icon="@drawable/ic_outline_notifications_24"
+                    app:iconGravity="textEnd"
+                    app:iconPadding="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/user_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/borders" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            android:fillViewport="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="24dp"
+                android:clipToPadding="false"
+                app:paddingStartSystemWindowInsets="@{true}"
+                app:paddingEndSystemWindowInsets="@{true}"
+                app:paddingBottomSystemWindowInsets="@{true}">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="16dp"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="?attr/colorPrimary">
+
+                    <View
+                        android:layout_width="36dp"
+                        android:layout_height="96dp"
+                        android:background="?attr/colorPrimaryLight"
+                        android:alpha="0.2"
+                        android:rotation="45"
+                        android:layout_marginTop="-27dp"
+                        android:layout_marginStart="3dp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_balance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="26dp"
+                            android:paddingHorizontal="16dp"
+                            android:text="Saldo"
+                            android:textSize="16sp"
+                            android:textColor="?attr/colorLightOnPrimary"
+                            android:textFontWeight="200"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/value_balance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="$198.556,85"
+                            android:textSize="22sp"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textFontWeight="600"
+                            android:letterSpacing="0.04"
+                            app:layout_constraintTop_toBottomOf="@id/label_balance"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="$198.556,85"/>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/icon_income"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="16dp"
+                            android:background="?attr/colorIncome"
+                            app:layout_constraintBottom_toBottomOf="@+id/label_income"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/value_income"
+                            app:roundedViewRadius="@{4}"
+                            app:srcCompat="@drawable/ic_baseline_add_24"
+                            app:tint="@color/white" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/value_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="64dp"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:text="9.875,57"
+                            android:textSize="18sp"
+                            android:textFontWeight="600"
+                            android:letterSpacing="0.04"
+                            app:layout_constraintTop_toBottomOf="@id/value_balance"
+                            app:layout_constraintStart_toEndOf="@id/icon_income"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Entrada"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textFontWeight="300"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/icon_income"
+                            app:layout_constraintTop_toBottomOf="@id/value_income" />
+
+                        <androidx.constraintlayout.widget.Barrier
+                            android:id="@+id/barrier_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:barrierDirection="end"
+                            app:constraint_referenced_ids="label_income,icon_income,value_income"/>
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/icon_payment"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="16dp"
+                            android:background="?attr/colorPayment"
+                            app:layout_constraintBottom_toBottomOf="@+id/label_payment"
+                            app:layout_constraintStart_toStartOf="@id/barrier_income"
+                            app:layout_constraintTop_toTopOf="@+id/value_income"
+                            app:roundedViewRadius="@{4}"
+                            app:srcCompat="@drawable/ic_baseline_remove_24"
+                            app:tint="@color/white" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/value_payment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="64dp"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:text="1.237,62"
+                            android:textSize="18sp"
+                            android:textFontWeight="600"
+                            android:letterSpacing="0.04"
+                            app:layout_constraintTop_toBottomOf="@id/value_balance"
+                            app:layout_constraintStart_toEndOf="@id/icon_payment"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_payment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Pagamentos"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textFontWeight="300"
+                            android:textSize="13sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/icon_payment"
+                            app:layout_constraintTop_toBottomOf="@id/value_payment" />
+
+                        <View
+                            android:id="@+id/bar_3"
+                            android:layout_width="24dp"
+                            android:layout_height="30dp"
+                            android:alpha="0.2"
+                            android:layout_marginEnd="16dp"
+                            android:background="?attr/colorPrimaryLight"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <View
+                            android:id="@+id/bar_2"
+                            android:layout_width="24dp"
+                            android:layout_height="70dp"
+                            android:alpha="0.2"
+                            android:layout_marginEnd="6dp"
+                            android:background="?attr/colorPrimaryLight"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/bar_3" />
+
+                        <View
+                            android:id="@+id/bar_1"
+                            android:layout_width="24dp"
+                            android:layout_height="48dp"
+                            android:alpha="0.2"
+                            android:layout_marginEnd="6dp"
+                            android:background="?attr/colorPrimaryLight"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/bar_2" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
