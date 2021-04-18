@@ -5,9 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.transition.MaterialSharedAxis
 import dev.forcetower.finances.databinding.FragmentCreateTransactionBinding
 import dev.forcetower.toolkit.components.BaseFragment
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 
 class CreateTransactionFragment : BaseFragment() {
     private lateinit var binding: FragmentCreateTransactionBinding
@@ -18,6 +25,7 @@ class CreateTransactionFragment : BaseFragment() {
         enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
         // pop-exit
         returnTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
         exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
     }
 
@@ -36,5 +44,45 @@ class CreateTransactionFragment : BaseFragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.transactionDate.setOnClickListener {
+            showDatePicker()
+        }
+        binding.transactionAccount.setOnClickListener {
+            navigateToSelectAccount()
+        }
+    }
+
+    private fun navigateToSelectAccount() {
+        val directions = CreateTransactionFragmentDirections.actionCreateTransactionToSelectAccount()
+        findNavController().navigate(directions)
+    }
+
+    private fun showDatePicker() {
+        val base = LocalDateTime.now()
+
+        val open = base
+            .atZone(ZoneId.ofOffset("UTC", ZoneOffset.UTC))
+            .toInstant()
+            .toEpochMilli()
+
+        val constraints = CalendarConstraints.Builder()
+            .setOpenAt(open)
+            .build()
+
+        val picker = MaterialDatePicker.Builder
+            .datePicker()
+            .setCalendarConstraints(constraints)
+            .apply {
+                setSelection(open)
+            }
+            .build()
+
+        picker.addOnPositiveButtonClickListener {
+            val instant = Instant.ofEpochMilli(it)
+            val date = LocalDateTime.ofInstant(instant, ZoneId.ofOffset("UTC", ZoneOffset.UTC))
+            binding.transactionDate.setText(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
+        }
+
+        picker.show(childFragmentManager, "transaction_date_picker")
     }
 }

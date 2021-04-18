@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="8dp">
+        <View
+            android:id="@+id/icon_frame"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:alpha="0.2"
+            android:background="@drawable/rounded_background_8"
+            tools:backgroundTint="#00BCD4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            tools:src="@drawable/shower"
+            app:layout_constraintBottom_toBottomOf="@+id/icon_frame"
+            app:layout_constraintEnd_toEndOf="@+id/icon_frame"
+            app:layout_constraintStart_toStartOf="@+id/icon_frame"
+            app:layout_constraintTop_toTopOf="@+id/icon_frame" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintEnd_toStartOf="@+id/icon_arrow"
+            app:layout_constraintStart_toEndOf="@+id/icon_frame"
+            app:layout_constraintTop_toTopOf="@id/icon_frame"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Água" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="13sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/icon_frame"
+            app:layout_constraintEnd_toStartOf="@+id/icon_arrow"
+            app:layout_constraintStart_toEndOf="@+id/icon_frame"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Contas relacionadas à casa" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
