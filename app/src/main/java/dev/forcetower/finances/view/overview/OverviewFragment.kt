@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dev.forcetower.finances.core.model.database.Transaction
 import dev.forcetower.finances.databinding.FragmentHomeOverviewBinding
 import dev.forcetower.toolkit.components.BaseFragment
@@ -27,6 +28,11 @@ class OverviewFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter.submitList(transactions)
+
+        binding.btnAddTransaction.setOnClickListener {
+            val directions = OverviewFragmentDirections.actionHomeOverviewToCreateTransaction()
+            findNavController().navigate(directions)
+        }
     }
 
     companion object {

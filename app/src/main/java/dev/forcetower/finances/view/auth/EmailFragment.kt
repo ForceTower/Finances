@@ -27,5 +27,10 @@ class EmailFragment : BaseFragment() {
             val directions = EmailFragmentDirections.actionAuthEmailToAuthPassword()
             findNavController().navigate(directions)
         }
+
+        binding.btnLoginGuest.setOnClickListener {
+            val directions = EmailFragmentDirections.actionGlobalHomeOverview()
+            findNavController().navigate(directions)
+        }
     }
 }

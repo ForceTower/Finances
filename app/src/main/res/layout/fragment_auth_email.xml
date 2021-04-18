@@ -53,7 +53,7 @@
                         android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                        style="@style/Widget.Finance.TextInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
@@ -127,9 +127,10 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <com.google.android.material.button.MaterialButton
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:id="@+id/btn_login_guest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_marginHorizontal="24dp"
                         android:letterSpacing="0.001"
                         android:text="@string/auth_enter_as_guest"
