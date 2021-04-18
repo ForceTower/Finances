@@ -3,6 +3,7 @@ package dev.forcetower.finances.view
 import android.os.Bundle
 import androidx.core.view.WindowCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dev.forcetower.finances.R
 import dev.forcetower.finances.databinding.ActivityMainBinding
@@ -18,4 +19,6 @@ class MainActivity : BaseActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
     }
+
+    override fun onSupportNavigateUp() = findNavController(R.id.fragment_container).navigateUp()
 }

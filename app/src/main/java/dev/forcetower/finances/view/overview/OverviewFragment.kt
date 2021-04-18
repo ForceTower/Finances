@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import dev.forcetower.finances.core.model.database.Transaction
 import dev.forcetower.finances.databinding.FragmentHomeOverviewBinding
 import dev.forcetower.toolkit.components.BaseFragment
@@ -12,6 +14,15 @@ import dev.forcetower.toolkit.components.BaseFragment
 class OverviewFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeOverviewBinding
     private lateinit var adapter: TransactionAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        // pop-enter
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        // exit
+        exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

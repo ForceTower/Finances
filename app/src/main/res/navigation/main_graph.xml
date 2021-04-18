@@ -53,7 +53,9 @@
             android:id="@+id/action_home_overview_to_create_transaction"
             app:destination="@id/create_transaction"
             app:enterAnim="@anim/expand_enter"
-            app:exitAnim="@anim/expand_exit" />
+            app:exitAnim="@anim/expand_exit"
+            app:popEnterAnim="@anim/expand_pop_enter"
+            app:popExitAnim="@anim/expand_pop_enter" />
     </fragment>
     <fragment
         android:id="@+id/create_transaction"
