@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -30,9 +31,11 @@
                     android:gravity="center"/>
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_back"
                     android:layout_width="48dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
                     app:icon="@drawable/ic_baseline_arrow_back_ios_new_24"
                     app:iconGravity="textStart"
                     app:iconPadding="0dp"
@@ -78,89 +81,221 @@
                         android:singleLine="true"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textview.MaterialTextView
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:layout_marginHorizontal="24dp"
-                    android:text="Vamos acrescentar alguns detalhes"
-                    android:textColor="?attr/colorPrimaryVariant"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Finance.TextInputLayout"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="24dp">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/transaction_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Nome da atividade"
-                        android:inputType="textCapSentences|textAutoComplete|textAutoCorrect"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Finance.TextInputLayout"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="24dp">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/transaction_value"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Valor"
-                        android:inputType="numberDecimal"/>
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="24dp"
-                    android:text="Onde esta atividade foi creditada?"
-                    android:textColor="?attr/colorPrimaryVariant"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="?attr/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Finance.TextInputLayout"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="24dp">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/transaction_account"
+                    <View
+                        android:layout_width="36dp"
+                        android:layout_height="96dp"
+                        android:background="?attr/colorPrimaryLight"
+                        android:alpha="0.2"
+                        android:rotation="45"
+                        android:layout_marginTop="-27dp"
+                        android:layout_marginStart="3dp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Conta"
-                        android:inputType="numberDecimal"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:paddingHorizontal="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="8dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/Widget.Finance.TextInputLayout"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginHorizontal="24dp">
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/transaction_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Data do débito"
-                        android:inputType="numberDecimal"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/ic_outline_money_24"
+                            app:tint="?attr/colorPrimaryLight"
+                            android:alpha="0.2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
-                    android:id="@+id/switch_advanced_details"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginHorizontal="24dp"
-                    android:text="Opções avançadas"/>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_transaction_value"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Valor"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_money_symbol"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="R$"
+                            app:layout_constraintBaseline_toBaselineOf="@id/transaction_value"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/transaction_value"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/transaction_value"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:letterSpacing="0.04"
+                            android:hint="0,00"
+                            android:textSize="28sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textColorHint="?attr/colorLightOnPrimary"
+                            android:inputType="numberDecimal"
+                            android:background="@null"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/label_money_symbol"
+                            app:layout_constraintTop_toBottomOf="@+id/label_transaction_value" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guide_center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintGuide_percent="0.5"
+                            android:orientation="vertical"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_transaction_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Nome"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="@id/guide_center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_value" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/transaction_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="Netflix"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textColorHint="?attr/colorLightOnPrimary"
+                            android:inputType="textCapSentences|textAutoCorrect|textAutoComplete"
+                            android:background="@null"
+                            app:layout_constraintEnd_toEndOf="@id/guide_center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/label_transaction_name" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_transaction_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Data"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guide_center"
+                            app:layout_constraintTop_toBottomOf="@+id/transaction_value" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/transaction_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@null"
+                            android:hint="Hoje"
+                            android:inputType="date"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textColorHint="?attr/colorLightOnPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guide_center"
+                            app:layout_constraintTop_toBottomOf="@+id/label_transaction_date" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_transaction_category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Categoria"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_date" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/transaction_category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@null"
+                            android:hint="Toque para selecionar"
+                            android:inputType="date"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textColorHint="?attr/colorLightOnPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/label_transaction_category" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/label_transaction_account"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Conta usada"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="16sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_category" />
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/transaction_account"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:background="@null"
+                            android:hint="Toque para selecionar"
+                            android:inputType="date"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textColorHint="?attr/colorLightOnPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/label_transaction_account" />
+
+                        <androidx.constraintlayout.widget.Group
+                            android:id="@+id/details_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="end|center_vertical"
+                            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
+                            android:text="Adicionar descrição detalhada"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textAllCaps="false"
+                            android:letterSpacing="0.001"
+                            app:layout_constraintHorizontal_bias="1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/transaction_account" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.core.widget.NestedScrollView>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
