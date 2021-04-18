@@ -47,9 +47,17 @@ class CreateTransactionFragment : BaseFragment() {
         binding.transactionDate.setOnClickListener {
             showDatePicker()
         }
+        binding.transactionCategory.setOnClickListener {
+            navigateToSelectCategory()
+        }
         binding.transactionAccount.setOnClickListener {
             navigateToSelectAccount()
         }
+    }
+
+    private fun navigateToSelectCategory() {
+        val directions = CreateTransactionFragmentDirections.actionCreateTransactionToSelectCategory()
+        findNavController().navigate(directions)
     }
 
     private fun navigateToSelectAccount() {
