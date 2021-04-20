@@ -20,7 +20,7 @@
         app:startDestination="@id/auth_email">
         <fragment
             android:id="@+id/auth_email"
-            android:name="dev.forcetower.finances.view.auth.EmailFragment"
+            android:name="dev.forcetower.finances.view.auth.email.EmailFragment"
             android:label="Auth Email"
             tools:layout="@layout/fragment_auth_email">
             <action

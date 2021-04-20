@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
-import dev.forcetower.finances.core.model.database.Transaction
 import dev.forcetower.finances.databinding.FragmentHomeOverviewBinding
 import dev.forcetower.toolkit.components.BaseFragment
 
@@ -38,22 +36,10 @@ class OverviewFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter.submitList(transactions)
 
         binding.btnAddTransaction.setOnClickListener {
             val directions = OverviewFragmentDirections.actionHomeOverviewToCreateTransaction()
             findNavController().navigate(directions)
         }
-    }
-
-    companion object {
-        private val transactions = listOf(
-            Transaction(1, "Netflix", "Streaming service", 45.90f, 1, 1),
-            Transaction(2, "Spotify", "Streaming service", 45.90f, 1, 1),
-            Transaction(3, "YouTube Premium", "Streaming service", 45.90f, 1, 1),
-            Transaction(4, "Netflix", "Streaming service", 45.90f, 1, 1),
-            Transaction(5, "Netflix", "Streaming service", 45.90f, 1, 1),
-            Transaction(6, "Netflix", "Streaming service", 45.90f, 1, 1),
-        )
     }
 }

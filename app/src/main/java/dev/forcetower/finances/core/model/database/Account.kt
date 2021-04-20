@@ -4,7 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class AuthToken(
+data class Account(
     @PrimaryKey
-    val token: String
+    val id: Int,
+    val name: String,
+    val type: Int
 )
