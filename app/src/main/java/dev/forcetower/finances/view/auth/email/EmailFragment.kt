@@ -14,7 +14,7 @@ import dev.forcetower.toolkit.components.BaseFragment
 
 @AndroidEntryPoint
 class EmailFragment : BaseFragment() {
-    private val viewModel by navGraphViewModels<AuthViewModel>(R.id.auth_graph)
+    private val viewModel by navGraphViewModels<AuthViewModel>(R.id.auth_graph) { defaultViewModelProviderFactory }
     private lateinit var binding: FragmentAuthEmailBinding
 
     override fun onCreateView(
