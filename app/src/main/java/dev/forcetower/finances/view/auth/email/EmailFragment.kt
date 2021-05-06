@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,7 +15,7 @@ import dev.forcetower.toolkit.components.BaseFragment
 
 @AndroidEntryPoint
 class EmailFragment : BaseFragment() {
-    private val viewModel by navGraphViewModels<AuthViewModel>(R.id.auth_graph) { defaultViewModelProviderFactory }
+    private val viewModel by hiltNavGraphViewModels<AuthViewModel>(R.id.auth_graph)
     private lateinit var binding: FragmentAuthEmailBinding
 
     override fun onCreateView(
