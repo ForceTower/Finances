@@ -5,11 +5,11 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.forcetower.finances.core.domain.repository.UserRepository
-import dev.forcetower.finances.core.domain.repository.UserRepositoryImpl
+import dev.forcetower.finances.core.source.business.UserRepositoryImpl
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
-    abstract fun users(impl: UserRepositoryImpl): UserRepository
+    abstract fun bindsUserRepository(impl: UserRepositoryImpl): UserRepository
 }
