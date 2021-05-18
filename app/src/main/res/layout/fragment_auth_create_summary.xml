@@ -2,6 +2,11 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="actions"
+            type="dev.forcetower.finances.view.auth.register.CreateAccountActions" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,13 +35,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="24dp"
-                    android:paddingBottom="8dp">
+                    android:paddingBottom="8dp"
+                    app:paddingStartSystemWindowInsets="@{true}"
+                    app:paddingEndSystemWindowInsets="@{true}"
+                    app:paddingBottomSystemWindowInsets="@{true}">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
-                        android:text="Tudo certo"
+                        android:text="@string/auth_create_summary_title"
                         android:textColor="?attr/colorOnBackground"
                         android:textSize="20sp" />
 
@@ -44,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
-                        android:text="Já temos todas as informações necessárias"
+                        android:text="@string/auth_create_all_info_present"
                         android:textSize="15sp" />
 
                     <FrameLayout
@@ -54,8 +62,9 @@
                         android:layout_marginTop="24dp"
                         android:layout_gravity="center"
                         app:roundedViewRadius="@{10}"
+                        app:goneIf="@{actions.pictureSelected}"
                         android:background="#66000000"
-                        android:contentDescription="Selecionar uma foto">
+                        android:contentDescription="@string/auth_selected_picture_accessibility">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="48dp"
@@ -64,6 +73,18 @@
                             app:srcCompat="@drawable/ic_outline_camera_alt_24"
                             android:layout_gravity="center"/>
                     </FrameLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        android:scaleType="centerCrop"
+                        app:roundedViewRadius="@{10}"
+                        app:goneUnless="@{actions.pictureSelected}"
+                        app:imageUri="@{actions.image}"
+                        android:contentDescription="@string/auth_selected_picture_accessibility"/>
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
@@ -74,6 +95,7 @@
                         android:textSize="16sp"
                         android:textAlignment="gravity"
                         android:gravity="center"
+                        android:text="@{actions.name}"
                         tools:text="Joseph Amaral da Silva" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -85,6 +107,7 @@
                         android:textSize="14sp"
                         android:textAlignment="gravity"
                         android:gravity="center"
+                        android:text="@{actions.email}"
                         tools:text="joseph@gmail.com" />
 
                     <com.google.android.material.button.MaterialButton
@@ -94,7 +117,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="16dp"
-                        android:text="Criar conta"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/auth_create_account_request"
+                        android:onClick="@{() -> actions.onCreateAccount()}"
+                        android:enabled="@{!actions.loading}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toEndOf="@+id/btn_refuse"

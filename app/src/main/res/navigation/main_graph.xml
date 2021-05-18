@@ -20,32 +20,51 @@
         app:startDestination="@id/auth_email">
         <fragment
             android:id="@+id/auth_email"
-            android:name="dev.forcetower.finances.view.auth.email.EmailFragment"
+            android:name="dev.forcetower.finances.view.auth.login.EmailFragment"
             android:label="Auth Email"
             tools:layout="@layout/fragment_auth_email">
-            <action
-                android:id="@+id/action_auth_email_to_auth_password"
-                app:destination="@id/auth_password" />
             <action
                 android:id="@+id/action_auth_email_to_createBasicFragment"
                 app:destination="@id/create_basic" />
         </fragment>
         <fragment
-            android:id="@+id/auth_password"
-            android:name="dev.forcetower.finances.view.auth.PasswordFragment"
-            android:label="Password"
-            tools:layout="@layout/fragment_auth_password" />
-        <fragment
             android:id="@+id/create_basic"
-            android:name="dev.forcetower.finances.view.auth.CreateBasicFragment"
+            android:name="dev.forcetower.finances.view.auth.register.basic.CreateBasicFragment"
             android:label="Basic Info"
-            tools:layout="@layout/fragment_auth_create_basic"/>
+            tools:layout="@layout/fragment_auth_create_basic">
+            <action
+                android:id="@+id/action_create_basic_to_create_password"
+                app:destination="@id/create_password" />
+        </fragment>
         <action
             android:id="@+id/action_global_home_overview"
             app:destination="@id/home_overview"
             app:launchSingleTop="true"
             app:popUpTo="@id/onboarding"
             app:popUpToInclusive="true" />
+        <fragment
+            android:id="@+id/create_password"
+            android:name="dev.forcetower.finances.view.auth.register.password.PasswordFragment"
+            android:label="Create Password"
+            tools:layout="@layout/fragment_auth_create_password">
+            <action
+                android:id="@+id/action_create_password_to_pick_image"
+                app:destination="@id/pick_image" />
+        </fragment>
+        <fragment
+            android:id="@+id/pick_image"
+            android:name="dev.forcetower.finances.view.auth.register.image.PickImageFragment"
+            android:label="Pick Image"
+            tools:layout="@layout/fragment_auth_create_picture">
+            <action
+                android:id="@+id/action_pick_image_to_summary"
+                app:destination="@id/summary" />
+        </fragment>
+        <fragment
+            android:id="@+id/summary"
+            android:name="dev.forcetower.finances.view.auth.register.summary.SummaryFragment"
+            android:label="Summary"
+            tools:layout="@layout/fragment_auth_create_summary"/>
     </navigation>
     <fragment
         android:id="@+id/home_overview"

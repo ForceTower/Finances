@@ -1,4 +1,4 @@
-package dev.forcetower.finances.core.domain.usecase
+package dev.forcetower.finances.core.domain.usecase.auth
 
 import dagger.Reusable
 import dev.forcetower.finances.core.domain.repository.UserRepository

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="actions"
-            type="dev.forcetower.finances.view.auth.email.EmailActions" />
+            type="dev.forcetower.finances.view.auth.login.EmailActions" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -64,13 +64,35 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginTop="16dp"
+                        app:textHelperError="@{actions.emailError}">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="@={actions.email}"
                             android:hint="@string/auth_type_email"
-                            android:inputType="textEmailAddress"/>
+                            android:inputType="textEmailAddress"
+                            android:enabled="@{!actions.loading}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Finance.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="8dp"
+                        app:textHelperError="@{actions.passwordError}">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={actions.password}"
+                            android:hint="@string/auth_type_password"
+                            android:inputType="textPassword"
+                            android:enabled="@{!actions.loading}"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -80,7 +102,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="8dp"
-                        android:text="@string/auth_start_continue" />
+                        android:text="@string/auth_start_continue"
+                        android:onClick="@{() -> actions.onEmailLogin()}"
+                        android:enabled="@{!actions.loading}"/>
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
@@ -105,6 +129,8 @@
                             android:layout_marginEnd="4dp"
                             android:text="@string/facebook"
                             android:textColor="@color/white"
+                            android:onClick="@{() -> actions.onFacebookLogin()}"
+                            android:enabled="@{!actions.loading}"
                             app:backgroundTint="@color/com_facebook_button_background_color"
                             app:icon="@drawable/com_facebook_button_icon"
                             app:iconGravity="textStart"
@@ -122,6 +148,8 @@
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="24dp"
                             android:text="@string/google"
+                            android:onClick="@{() -> actions.onGoogleLogin()}"
+                            android:enabled="@{!actions.loading}"
                             app:backgroundTint="?attr/colorOnSurface"
                             app:icon="@drawable/googleg_standard_color_18"
                             app:iconGravity="textStart"
@@ -133,11 +161,32 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/browser_actions_divider_color"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{() -> actions.onCreateAccount()}"
+                        android:enabled="@{!actions.loading}"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_marginHorizontal="24dp"
+                        android:letterSpacing="0.001"
+                        android:text="@string/auth_register"
+                        android:textAllCaps="false" />
+
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_login_guest"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:onClick="@{() -> actions.loginGuest()}"
+                        android:onClick="@{() -> actions.onGuestLogin()}"
+                        android:enabled="@{!actions.loading}"
                         style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_marginHorizontal="24dp"
                         android:letterSpacing="0.001"

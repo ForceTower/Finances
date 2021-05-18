@@ -33,4 +33,28 @@
     <string name="latest_transactions">Últimas transações</string>
     <string name="see_all_transactions">Ver todas</string>
     <string name="user_guest_account">Convidado</string>
+    <string name="auth_type_password">Digite sua senha</string>
+
+    <string name="auth_err_not_an_email">Digite um email válido</string>
+    <string name="auth_err_small_password">Senha muito curta</string>
+    <string name="auth_register">Criar sua conta</string>
+    <string name="auth_register_lets_meet">Vamos nos conhecer</string>
+    <string name="auth_register_control_finances">Falta pouco para você controlar suas finanças</string>
+    <string name="auth_register_name">Qual o seu nome?</string>
+    <string name="auth_register_email">E o seu email?</string>
+    <string name="auth_register_basics_continue">Continuar</string>
+    <string name="auth_password_create">Hora de se proteger</string>
+    <string name="auth_password_pick">Escolha a senha para sua conta</string>
+    <string name="auth_create_pick_password">Digite sua senha</string>
+    <string name="auth_create_repeat_password">Repita a senha</string>
+    <string name="auth_create_password_continue">Continuar</string>
+    <string name="auth_pick_picture">Gostaria de escolher uma foto?</string>
+    <string name="auth_pick_picture_subtitle">Não precisamos ser tímidos</string>
+    <string name="auth_request_pick_picture_accessibility">Selecionar uma foto</string>
+    <string name="auth_selected_picture_accessibility">Foto selecionada</string>
+    <string name="auth_picture_not_now">Agora não</string>
+    <string name="auth_pick_picture_continue">Continuar</string>
+    <string name="auth_create_summary_title">Tudo certo</string>
+    <string name="auth_create_all_info_present">Já temos todas as informações necessárias</string>
+    <string name="auth_create_account_request">Criar conta</string>
 </resources>

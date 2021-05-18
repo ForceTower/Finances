@@ -2,6 +2,11 @@
 <layout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="actions"
+            type="dev.forcetower.finances.view.auth.register.CreateAccountActions" />
+    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,13 +35,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="24dp"
-                    android:paddingBottom="8dp">
+                    android:paddingBottom="8dp"
+                    app:paddingStartSystemWindowInsets="@{true}"
+                    app:paddingEndSystemWindowInsets="@{true}"
+                    app:paddingBottomSystemWindowInsets="@{true}">
 
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
-                        android:text="Vamos nos conhecer"
+                        android:text="@string/auth_register_lets_meet"
                         android:textColor="?attr/colorOnBackground"
                         android:textSize="20sp" />
 
@@ -44,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
-                        android:text="Falta pouco para você controlar suas finanças"
+                        android:text="@string/auth_register_control_finances"
                         android:textSize="15sp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -57,8 +65,24 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Qual o seu nome?"
-                            android:inputType="textPersonName"/>
+                            android:hint="@string/auth_register_name"
+                            android:text="@={actions.name}"
+                            android:inputType="textPersonName|textCapWords"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Finance.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="8dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/auth_register_email"
+                            android:text="@={actions.email}"
+                            android:inputType="textEmailAddress"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.button.MaterialButton
@@ -68,7 +92,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="8dp"
-                        android:text="Continuar" />
+                        android:layout_marginBottom="8dp"
+                        android:enabled="@{actions.basicCompleted}"
+                        android:onClick="@{() -> actions.onBasicContinue()}"
+                        android:text="@string/auth_register_basics_continue" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
