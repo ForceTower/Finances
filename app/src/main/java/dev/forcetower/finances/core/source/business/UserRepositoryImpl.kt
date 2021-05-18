@@ -37,7 +37,7 @@ class UserRepositoryImpl @Inject constructor(
 
     }
 
-    override fun getSelectedUser(): Flow<Result<User?>> {
+    override fun getSelectedUser(): Flow<Result<User>> {
         return database.user.selectCurrent().map { Result.Success(it) }
     }
 }

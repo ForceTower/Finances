@@ -10,5 +10,5 @@ interface UserRepository {
     suspend fun createGuest()
     suspend fun login(credential: BasicLoginCredential)
     suspend fun createAccount(data: CreateAccountData)
-    fun getSelectedUser(): Flow<Result<User?>>
+    fun getSelectedUser(): Flow<Result<User>>
 }

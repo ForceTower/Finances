@@ -11,5 +11,5 @@ import dev.forcetower.finances.core.source.business.UserRepositoryImpl
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
-    abstract fun bindsUserRepository(impl: UserRepositoryImpl): UserRepository
+    abstract fun bindUserRepository(impl: UserRepositoryImpl): UserRepository
 }

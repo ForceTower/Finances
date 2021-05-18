@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 class ConnectedUserUseCase @Inject constructor(
     private val repository: UserRepository
-) : FlowUseCase<Unit, User?>(){
-    override fun execute(parameters: Unit): Flow<Result<User?>> {
+) : FlowUseCase<Unit, User>(){
+    override fun execute(parameters: Unit): Flow<Result<User>> {
         return repository.getSelectedUser()
     }
 }

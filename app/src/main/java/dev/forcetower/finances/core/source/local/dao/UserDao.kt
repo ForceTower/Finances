@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 abstract class UserDao : BaseDao<User>() {
     @Query("SELECT * FROM User LIMIT 1")
-    abstract fun selectCurrent(): Flow<User?>
+    abstract fun selectCurrent(): Flow<User>
 
     @Query("SELECT * FROM User LIMIT 1")
     abstract suspend fun requireCurrent(): User?
