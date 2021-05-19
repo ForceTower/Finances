@@ -11,6 +11,7 @@ import dev.forcetower.finances.core.model.database.Transaction
 import dev.forcetower.finances.core.model.database.User
 import dev.forcetower.finances.core.source.local.dao.AccountDao
 import dev.forcetower.finances.core.source.local.dao.AuthTokenDao
+import dev.forcetower.finances.core.source.local.dao.TransactionDao
 import dev.forcetower.finances.core.source.local.dao.UserDao
 
 @Database(entities = [
@@ -26,4 +27,5 @@ abstract class FinanceDB : RoomDatabase() {
     abstract val auth: AuthTokenDao
     abstract val user: UserDao
     abstract val account: AccountDao
+    abstract val transaction: TransactionDao
 }

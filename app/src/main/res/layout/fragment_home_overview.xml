@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="dev.forcetower.finances.R" />
+        <variable
+            name="actions"
+            type="dev.forcetower.finances.view.overview.OverviewActions" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
                         android:layout_marginEnd="8dp"
-                        android:text="João Paulo Sena"
+                        android:text="@{actions.user.name}"
                         android:textColor="?attr/colorPrimary"
                         android:textStyle="bold"
                         tools:text="@tools:sample/full_names" />
@@ -63,12 +71,31 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="24dp"
-                    app:clipToCircle="@{true}"
-                    app:imageUrl="@{&quot;https://avatars.githubusercontent.com/u/9421614?v=4&quot;}"
+                    app:imageUrl="@{actions.user.picture}"
+                    app:clipCircle="@{true}"
+                    app:invisibleUnless="@{actions.user.picture != null}"
                     app:layout_constraintTop_toTopOf="@id/borders"
                     app:layout_constraintBottom_toBottomOf="@id/borders"
                     app:layout_constraintStart_toStartOf="@id/borders"
                     app:layout_constraintEnd_toEndOf="@id/borders"
+                    tools:src="@tools:sample/avatars" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/user_image_fallback"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="24dp"
+                    android:src="@drawable/ic_baseline_person_24"
+                    android:tint="?attr/colorPrimary"
+                    android:scaleType="centerInside"
+                    android:background="@color/color_primary_20"
+                    app:clipToCircle="@{true}"
+                    app:goneIf="@{actions.user.picture != null}"
+                    app:layout_constraintTop_toTopOf="@id/borders"
+                    app:layout_constraintBottom_toBottomOf="@id/borders"
+                    app:layout_constraintStart_toStartOf="@id/borders"
+                    app:layout_constraintEnd_toEndOf="@id/borders"
+                    tools:visibility="gone"
                     tools:src="@tools:sample/avatars" />
 
                 <com.google.android.material.button.MaterialButton

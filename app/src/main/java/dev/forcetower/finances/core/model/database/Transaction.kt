@@ -17,7 +17,7 @@ data class Transaction(
     val title: String,
     val price: Float,
     val type: Int,
-    val dateStart: LocalDateTime,
+    val date: LocalDateTime,
     val dateEnd: LocalDateTime?,
     val repeatRate: Int?,
     val description: String?,

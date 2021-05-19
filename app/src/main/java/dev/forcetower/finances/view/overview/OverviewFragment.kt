@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialSharedAxis
 import dev.forcetower.finances.databinding.FragmentHomeOverviewBinding
 import dev.forcetower.toolkit.components.BaseFragment
 
 class OverviewFragment : BaseFragment() {
+    private val viewModel by activityViewModels<OverviewViewModel>()
     private lateinit var binding: FragmentHomeOverviewBinding
     private lateinit var adapter: TransactionAdapter
 
@@ -30,7 +32,9 @@ class OverviewFragment : BaseFragment() {
         adapter = TransactionAdapter()
         return FragmentHomeOverviewBinding.inflate(inflater, container, false).also {
             binding = it
+            binding.actions = viewModel
             binding.recyclerTransactions.adapter = adapter
+            binding.lifecycleOwner = viewLifecycleOwner
         }.root
     }
 
