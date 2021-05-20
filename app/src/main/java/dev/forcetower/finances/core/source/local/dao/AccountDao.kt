@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 abstract class AccountDao : BaseDao<Account>() {
     @Query("SELECT SUM(balance) FROM Account")
-    abstract fun getBalance(): Flow<Double>
+    abstract fun getBalance(): Flow<Float>
 
     @Query("SELECT * FROM `Account` WHERE id = :id")
     abstract suspend fun requireAccountById(id: Int): Account?

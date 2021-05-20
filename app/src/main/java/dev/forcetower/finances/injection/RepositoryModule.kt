@@ -4,8 +4,10 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dev.forcetower.finances.core.domain.repository.SettingsRepository
 import dev.forcetower.finances.core.domain.repository.TransactionRepository
 import dev.forcetower.finances.core.domain.repository.UserRepository
+import dev.forcetower.finances.core.source.business.SettingsRepositoryImpl
 import dev.forcetower.finances.core.source.business.TransactionRepositoryImpl
 import dev.forcetower.finances.core.source.business.UserRepositoryImpl
 
@@ -16,4 +18,6 @@ abstract class RepositoryModule {
     abstract fun bindUserRepository(impl: UserRepositoryImpl): UserRepository
     @Binds
     abstract fun bindTransactionRepository(impl: TransactionRepositoryImpl): TransactionRepository
+    @Binds
+    abstract fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
 }

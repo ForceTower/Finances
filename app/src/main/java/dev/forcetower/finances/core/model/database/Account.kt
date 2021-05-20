@@ -9,5 +9,5 @@ data class Account(
     val id: Int,
     val name: String,
     val type: Int,
-    val balance: Double
+    val balance: Float
 )

@@ -10,8 +10,8 @@ import javax.inject.Inject
 @Reusable
 class GetBalanceUseCase @Inject constructor(
     private val repository: TransactionRepository
-) : FlowUseCase<Unit, Double>() {
-    override fun execute(parameters: Unit): Flow<Result<Double>> {
+) : FlowUseCase<Unit, Float>() {
+    override fun execute(parameters: Unit): Flow<Result<Float>> {
         return repository.getBalance()
     }
 }

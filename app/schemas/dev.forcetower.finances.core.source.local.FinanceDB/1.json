@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "7e9043b0dae24e6c5ac349bfb0e3e1a2",
+    "identityHash": "d506de573ab748a937b10a32a587b0d0",
     "entities": [
       {
         "tableName": "AuthToken",
@@ -64,7 +64,7 @@
       },
       {
         "tableName": "Account",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `type` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `type` INTEGER NOT NULL, `balance` REAL NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -83,6 +83,12 @@
             "columnName": "type",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "balance",
+            "columnName": "balance",
+            "affinity": "REAL",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -96,7 +102,7 @@
       },
       {
         "tableName": "Transaction",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `price` REAL NOT NULL, `type` INTEGER NOT NULL, `dateStart` INTEGER NOT NULL, `dateEnd` INTEGER, `repeatRate` INTEGER, `description` TEXT, `userId` INTEGER NOT NULL, `categoryId` INTEGER NOT NULL, `subcategoryId` INTEGER NOT NULL, `accountId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `price` REAL NOT NULL, `type` INTEGER NOT NULL, `date` INTEGER NOT NULL, `dateEnd` INTEGER, `repeatRate` INTEGER, `description` TEXT, `userId` INTEGER NOT NULL, `categoryId` INTEGER NOT NULL, `subcategoryId` INTEGER NOT NULL, `accountId` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -123,8 +129,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "dateStart",
-            "columnName": "dateStart",
+            "fieldPath": "date",
+            "columnName": "date",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -296,7 +302,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7e9043b0dae24e6c5ac349bfb0e3e1a2')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd506de573ab748a937b10a32a587b0d0')"
     ]
   }
 }

@@ -133,9 +133,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
-                    app:balance="124133.45"
-                    app:income="9867.34"
-                    app:payment="4873.51"
+                    app:balance="@{actions.balance}"
+                    app:income="@{actions.income}"
+                    app:payment="@{actions.payment}"
                     app:cardCornerRadius="14dp"
                     app:cardElevation="8dp"
                     app:cardBackgroundColor="?attr/colorPrimary"/>
