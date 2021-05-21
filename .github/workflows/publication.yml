@@ -20,12 +20,18 @@ jobs:
         with:
           java-version: 1.8
 
+      - name: Decrypt signatures
+        run: gpg --quiet --batch --yes --decrypt --passphrase="${{ secrets.CRYPT_PASSWORD }}" --output sign.jks sign.jks.gpg
+
       - name: Dependencies
         run: ./gradlew dependencies
 
       - name: Publish Release App
         run: ./gradlew assembleRelease
         if: "!contains(github.event.head_commit.message, '[publish skip]')"
+        env:
+          APP_KEYSTORE_ALIAS: ${{ secrets.APP_KEYSTORE_ALIAS }}
+          APP_KEYSTORE_PASSWORD: ${{ secrets.APP_KEYSTORE_PASSWORD }}
 
       - name: Upload result for job
         uses: actions/upload-artifact@v1

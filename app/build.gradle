@@ -28,8 +28,22 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            def password = System.getenv("APP_KEYSTORE_PASSWORD")
+            def alias = System.getenv("APP_KEYSTORE_ALIAS")
+            def signFile = rootProject.file("sign.jks")
+
+            storeFile signFile
+            storePassword password
+            keyAlias alias
+            keyPassword password
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
