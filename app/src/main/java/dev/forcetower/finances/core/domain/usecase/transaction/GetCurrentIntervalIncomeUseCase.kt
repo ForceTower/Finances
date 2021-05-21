@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.transform
+import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -29,9 +30,9 @@ class GetCurrentIntervalIncomeUseCase @Inject constructor(
             .mapNotNull {
                 it.data
             }.flatMapConcat {
-                val now = LocalDateTime.now()
-                val past = now.minusDays(it.toLong())
-                repository.getIncomeOfInterval(now, past)
+                val today = LocalDate.now().atStartOfDay()
+                val past = today.minusDays(it.toLong())
+                repository.getIncomeOfInterval(today, past)
             }
     }
 }

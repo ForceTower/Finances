@@ -10,6 +10,7 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.mapNotNull
+import java.time.LocalDate
 import java.time.LocalDateTime
 import javax.inject.Inject
 
@@ -24,9 +25,9 @@ class GetCurrentIntervalPaymentUseCase @Inject constructor(
             .mapNotNull {
                 it.data
             }.flatMapConcat {
-                val now = LocalDateTime.now()
-                val past = now.minusDays(it.toLong())
-                repository.getPaymentOfInterval(now, past)
+                val today = LocalDate.now().atStartOfDay()
+                val past = today.minusDays(it.toLong())
+                repository.getPaymentOfInterval(today, past)
             }
     }
 }

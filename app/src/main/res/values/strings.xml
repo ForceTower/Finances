@@ -57,4 +57,19 @@
     <string name="auth_create_summary_title">Tudo certo</string>
     <string name="auth_create_all_info_present">Já temos todas as informações necessárias</string>
     <string name="auth_create_account_request">Criar conta</string>
+    <string name="format_zero_money">0,00</string>
+    <string name="create_transaction_value_label">Valor</string>
+    <string name="create_transaction_title">Nova atividade</string>
+    <string name="create_transaction_type_label">Vamos começar pelo tipo dessa atividade</string>
+    <string name="create_transaction_type_select_hint">Tipo da atividade</string>
+    <string name="brl_currency_code">R$</string>
+    <string name="create_transaction_name_label">Nome</string>
+    <string name="create_transaction_date_label">Data</string>
+    <string name="create_transaction_today_date">Hoje</string>
+    <string name="create_transaction_category_label">Categoria</string>
+    <string name="create_transaction_account_label">Conta usada</string>
+    <string name="transaction_create_pick_category_hint">Toque para selecionar</string>
+    <string name="transaction_create_pick_account_hint">Toque para selecionar</string>
+    <string name="create_transaction_add_details">Adicionar descrição detalhada</string>
+    <string name="create_transaction_name_hint">Compras do dia</string>
 </resources>

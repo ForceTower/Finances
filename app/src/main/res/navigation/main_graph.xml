@@ -73,42 +73,44 @@
         tools:layout="@layout/fragment_home_overview">
         <action
             android:id="@+id/action_home_overview_to_create_transaction"
-            app:destination="@id/create_transaction"
+            app:destination="@id/create_transaction_graph"
             app:enterAnim="@anim/expand_enter"
             app:exitAnim="@anim/expand_exit"
             app:popEnterAnim="@anim/expand_pop_enter"
             app:popExitAnim="@anim/expand_pop_enter" />
     </fragment>
-    <fragment
-        android:id="@+id/create_transaction"
-        android:name="dev.forcetower.finances.view.transaction.create.CreateTransactionFragment"
-        android:label="Create Transaction"
-        tools:layout="@layout/fragment_create_transaction">
-        <action
-            android:id="@+id/action_create_transaction_to_select_category"
-            app:destination="@id/select_category" />
-        <action
-            android:id="@+id/action_create_transaction_to_select_account"
-            app:destination="@id/select_account" />
-    </fragment>
-    <fragment
-        android:id="@+id/select_category"
-        android:name="dev.forcetower.finances.view.transaction.create.SelectCategoryFragment"
-        android:label="Select Category"
-        tools:layout="@layout/fragment_select_category">
-        <action
-            android:id="@+id/action_select_category_to_select_subcategory"
-            app:destination="@id/select_subcategory" />
-    </fragment>
-    <fragment
-        android:id="@+id/select_subcategory"
-        android:name="dev.forcetower.finances.view.transaction.create.SelectSubcategoryFragment"
-        android:label="Select Subcategory"
-        tools:layout="@layout/fragment_select_subcategory">
-    </fragment>
-    <fragment
-        android:id="@+id/select_account"
-        android:name="dev.forcetower.finances.view.transaction.create.SelectAccountFragment"
-        android:label="Select Account"
-        tools:layout="@layout/fragment_select_account"/>
+    <navigation android:id="@+id/create_transaction_graph"
+        app:startDestination="@id/create_transaction">
+        <fragment
+            android:id="@+id/select_category"
+            android:name="dev.forcetower.finances.view.transaction.create.SelectCategoryFragment"
+            android:label="Select Category"
+            tools:layout="@layout/fragment_select_category">
+            <action
+                android:id="@+id/action_select_category_to_select_subcategory"
+                app:destination="@id/select_subcategory" />
+        </fragment>
+        <fragment
+            android:id="@+id/select_subcategory"
+            android:name="dev.forcetower.finances.view.transaction.create.SelectSubcategoryFragment"
+            android:label="Select Subcategory"
+            tools:layout="@layout/fragment_select_subcategory"></fragment>
+        <fragment
+            android:id="@+id/create_transaction"
+            android:name="dev.forcetower.finances.view.transaction.create.CreateTransactionFragment"
+            android:label="Create Transaction"
+            tools:layout="@layout/fragment_create_transaction">
+            <action
+                android:id="@+id/action_create_transaction_to_select_category"
+                app:destination="@id/select_category" />
+            <action
+                android:id="@+id/action_create_transaction_to_select_account"
+                app:destination="@id/select_account" />
+        </fragment>
+        <fragment
+            android:id="@+id/select_account"
+            android:name="dev.forcetower.finances.view.transaction.create.SelectAccountFragment"
+            android:label="Select Account"
+            tools:layout="@layout/fragment_select_account" />
+    </navigation>
 </navigation>
