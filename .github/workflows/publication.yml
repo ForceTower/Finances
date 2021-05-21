@@ -1,0 +1,35 @@
+name: Android Publisher CI
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: 'recursive'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Dependencies
+        run: ./gradlew dependencies
+
+      - name: Publish Release App
+        run: ./gradlew assembleRelease
+        if: "!contains(github.event.head_commit.message, '[publish skip]')"
+
+      - name: Upload result for job
+        uses: actions/upload-artifact@v1
+        if: "!contains(github.event.head_commit.message, '[publish skip]')"
+        with:
+          name: application
+          path: app/build/outputs/apk/release/app-release.apk
