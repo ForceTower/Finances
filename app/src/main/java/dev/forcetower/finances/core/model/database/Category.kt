@@ -8,6 +8,5 @@ data class Category(
     @PrimaryKey
     val id: Int,
     val name: String,
-    val icon: String,
-    val default: Boolean
+    val icon: String
 )
